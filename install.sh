@@ -3,20 +3,20 @@ termux-setup-storage
 
 apt update
 apt install -y git zsh
-git clone https://github.com/zfuns/termux-ohmyzsh.git "~/termux-ohmyzsh" --depth 1
 
-mv "~/.termux" "~/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
-cp -R "$HOME/termux-ohmyzsh/.termux" "~/.termux"
+git clone https://github.com/zfuns/termux-ohmyzsh.git "$HOME/termux-ohmyzsh"
 
-git clone git://github.com/robbyrussell/oh-my-zsh.git "~/.oh-my-zsh" --depth 1
-mv "~/.zshrc" "~/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
-cp "~/termux-ohmyzsh/.zshrc" "~/.zshrc"
-sed -i '/^ZSH_THEME/d' "~/.zshrc"
-sed -i '1iZSH_THEME="agnoster"' "~/.zshrc"
+# mv "$HOME/.termux" "$HOME/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
+cp -R "$HOME/termux-ohmyzsh/.termux" "$HOME/.termux"
 
-git clone git://github.com/zsh-users/zsh-syntax-highlighting.git "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" --depth 1
+git clone https://github.com/robbyrussell/oh-my-zsh.git "$HOME/.oh-my-zsh"
+mv "$HOME/.zshrc" "$HOME/.zshrc.bak.$(date +%Y.%m.%d-%H:%M:%S)"
+cp "$HOME/termux-ohmyzsh/.zshrc" "$HOME/.zshrc"
+sed -i '/^ZSH_THEME/d' "$HOME/.zshrc"
+sed -i '1iZSH_THEME="agnoster"' "$HOME/.zshrc"
 
-git clone git://github.com/zsh-users/zsh-autosuggestions "~/.oh-my-zsh/custom/plugins/zsh-autosuggestions" --depth 1
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
+git clone https://github.com/zsh-users/zsh-autosuggestions "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
 
 chsh -s zsh
 
@@ -27,5 +27,7 @@ echo "Choose your font now~"
 $HOME/.termux/fonts.sh
 
 echo "Please restart Termux app..."
+
+source $HOME/.zshrc
 
 exit
