@@ -3,7 +3,6 @@ termux-setup-storage
 
 apt update
 apt install -y git zsh
-zsh
 git clone https://github.com/zfuns/termux-ohmyzsh.git "$HOME/termux-ohmyzsh" --depth 1
 
 mv "$HOME/.termux" "$HOME/.termux.bak.$(date +%Y.%m.%d-%H:%M:%S)"
